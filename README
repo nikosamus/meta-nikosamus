@@ -1,0 +1,49 @@
+This README file contains information on the contents of the meta-default layer.
+
+Please see the corresponding sections below for details.
+
+Dependencies
+============
+
+  URI: <first dependency>
+  branch: <branch name>
+
+  URI: <second dependency>
+  branch: <branch name>
+
+  .
+  .
+  .
+
+Patches
+=======
+
+Please submit any patches against the meta-default layer to the xxxx mailing list (xxxx@zzzz.org)
+and cc: the maintainer:
+
+Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
+
+Table of Contents
+=================
+
+  I. Adding the meta-default layer to your build
+ II. Misc
+
+
+I. Adding the meta-default layer to your build
+=================================================
+
+Run 'bitbake-layers add-layer meta-default'
+
+II. Misc
+========
+
+# Save layer from build-openstlinuxweston-stm32mp1
+cd build-openstlinuxweston-stm32mp1/
+bitbake-layers save-build-conf ../layers/meta-nikosamus/ nikosamus-st-01
+
+# Source oe-init-build-env using the template
+TEMPLATECONF=/workspaces/checkout_repo-manifest-01/layers/meta-nikosamus/conf/templates/nikosamus-st-01 . /workspaces/checkout_repo-manifest-01/layers/openembedded-core/oe-init-build-env build-nikosamus-st-01
+
+# Bake
+bitbake nikosamus-st-01
