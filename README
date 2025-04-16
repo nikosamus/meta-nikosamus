@@ -47,3 +47,23 @@ TEMPLATECONF=/workspaces/checkout_repo-manifest-01/layers/meta-nikosamus/conf/te
 
 # Bake
 bitbake nikosamus-st-01
+
+# Create image
+cd checkout_repo-manifest-01/build-nikosamus-st-01/tmp-glibc/deploy/images/stm32mp1/scripts
+./create_sdcard_from_flashlayout.sh ../flashlayout_nikosamus-st-01/extensible/FlashLayout_sdcard_stm32mp157f-dk2-extensible.tsv
+
+# Flash image
+cd checkout_repo-manifest-01/build-nikosamus-st-01/tmp-glibc/deploy/images/stm32mp1/
+sudo dd if=FlashLayout_sdcard_stm32mp157f-dk2-extensible.raw of=/dev/sdb bs=8M conv=fdatasync status=progress oflag=direct
+
+# Shell
+sudo picocom /dev/ttyACM0 -b115200
+
+# Functions
+screen
+touchscreen
+wayland
+alsa, pulseaudio
+keyboard, mouse
+hdmi
+
